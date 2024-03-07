@@ -5,12 +5,13 @@ numeric vectors
 Convert text to embedding vectors using the Universal Sentence Encoder model
 • Build a hotel review Sentiment Analysis model
 • Use the model to predict sentiment on unseen data
+# The Data
 The dataset is hosted on https://www.kaggle.com/datasets/jiashenliu/515k-hotel-reviews-data-in-europe and is provided by Jiashen Liu³⁰⁶. It contains European hotel
 reviews that were scraped from https://www.booking.com/
 This dataset contains 515,000 customer reviews and scoring of 1493 luxury hotels across
 Europe. Meanwhile, the geographical location of hotels are also provided for further
 analysis.
-.Load the Data
+# Load the Data
 df = pd.read_csv("Hotel_Reviews.csv", parse_dates=['Review_Date']
 But we are quite interested  in the review text and review score. 
 df["review"] = df["Negative_Review"] + df["Positive_Review"]
