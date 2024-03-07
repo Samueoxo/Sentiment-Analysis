@@ -5,8 +5,20 @@ numeric vectors
 Convert text to embedding vectors using the Universal Sentence Encoder model
 • Build a hotel review Sentiment Analysis model
 • Use the model to predict sentiment on unseen data
-The dataset is hosted on https://www.kaggle.com/ and is provided by Jiashen Liu³⁰⁶. It contains European hotel
-reviews that were scraped from Booking.com
+The dataset is hosted on https://www.kaggle.com/datasets/jiashenliu/515k-hotel-reviews-data-in-europe and is provided by Jiashen Liu³⁰⁶. It contains European hotel
+reviews that were scraped from https://www.booking.com/
 This dataset contains 515,000 customer reviews and scoring of 1493 luxury hotels across
 Europe. Meanwhile, the geographical location of hotels are also provided for further
 analysis.
+.Load the Data
+df = pd.read_csv("Hotel_Reviews.csv", parse_dates=['Review_Date']
+But we are quite interested  in the review text and review score. 
+df["review"] = df["Negative_Review"] + df["Positive_Review"]
+ df["review_type"] = df["Reviewer_Score"].apply(
+ lambda x: "bad" if x < 7 else "good"
+ )
+
+ df = df[["review", "review_type"]]
+ Unfortunately neural network don’t understand text data. To deal with the issue, you must figure
+out a way to convert text into numbers. There are a variety of ways to solve the problem, but most
+well-performing models use https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture
